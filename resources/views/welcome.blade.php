@@ -49,13 +49,18 @@
       <th>Email</th>  
     </tr> 
     </thead> 
+<?php
+    $user = App\user::select('id','name','email')->get();
+    foreach($user as $user):
+        
+?>
 
        <th scope="row"> <strong>{{$user->id }}</strong> 
         <strong><td>{{$user->name }}</td></strong>
          <strong><td>{{$user->email }}</td></strong>
 
          <td >
-             <button type="button" class="btn btn-primary">Modificar</button>
+             <button type="button" class="btn btn-primary center">Modificar</button>
              </td>
              <td>
              <button type="button" class="btn btn btn-danger">Eliminar</button>
