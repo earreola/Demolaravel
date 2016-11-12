@@ -11,8 +11,15 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('usuario/mostrar','UsuarioController@mostrar');
+Route::get('usuario/edit','UsuarioController@edit');
 Route::resource('usuario','UsuarioController');
+
+
+
+
+

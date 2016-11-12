@@ -8,11 +8,16 @@ use App\Http\Requests;
 
 class UsuarioController extends Controller
 {
-    //
-    public function create()
-    {
-    	return view('welcome');
+    //  
+    public function mostrar(){
+    	$users = \App\User::all();
+    	return View('usuario/mostrar')->with('users', $users);
     }
+    public function create()
+    {	
+    	return View('usuario/create');
+    }
+
 
     public function store(Request $request)
     {
@@ -24,5 +29,33 @@ class UsuarioController extends Controller
     	return "Usuario Registrado";
 
     }
+    public function mensaje(){
+    	return "mensaje" ;
+    }
+    public function edit($id)
+    {
+    	$user = \App\User::findOrFail($id);
+
+    	return view('usuario/edit', compact('user')); 
+    }
+
+
+    public function update(Request $request, $id)
+    {
+    	$user = \App\User::find($id);
+    	$user->name = $request->name;
+    	$user->email = $request->email;
+    	$user->password = $request->password;
+    	$user->save();
+
+    }
+
+	public function destroy($id)
+	{
+       \App\User::destroy($id);
+	}
+	
+	    
+
 }
 

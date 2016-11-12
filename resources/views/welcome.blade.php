@@ -1,79 +1,132 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Laravel</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
- 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Pag Principal</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-       {!!Html::style('css/style.css')!!}
+    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+    {!!Html::style('css/style.css')!!}
+    <script>
+        $(document).ready(function(e){
+            $('#menu1').on('click',function(){
+                $('#mostrardatos').load('usuario/mostrar');
 
-    </head>
-    <body>
-     <div class="container">
-            <div class="content">
+            });
+             $('#menu2').on('click',function(){
+                $('#mostrardatos').load('usuario/create');
 
-                {!!Form::open(['route' => 'usuario.store', 'method'=>'POST']) !!}
-                    <div class="form-group">
-                      {!!Form::label('Nombre')!!}
-                      {!!Form::text('name',null,['class'=>'form-control', 'placeholder'=>'ingrese el nombre del usuario'])!!}
-                   </div>
+            });
+              $('#menu3').click(function(){
+                $('#mostrardatos').load('usuario/mensaje');
 
-                    <div class="form-group">
-                      {!!Form::label('Correo')!!}
-                      {!!Form::text('email',null,['class'=>'form-control', 'placeholder'=>'ingrese el correo del usuario'])!!}
-                   </div>
+            });
+        });
 
-                    <div class="form-group">
-                      {!!Form::label('Contraseña')!!}
-                      {!!Form::password('password',['class'=>'form-control', 'placeholder'=>'ingrese la contraseña del usuario'])!!}
-                   </div>
-                       {!!Form::submit('Registrar',['class'=>'btn btn-primary'])!!}
 
-                {!!Form::close()!!}
+      
+    </script>
+</head>
+<body>
+<style>
+          
+    *{
+        margin: 0px;
+        padding: 0px;
+        font-weight: lighter;
+    }
+    nav{
+        position: fixed;
+        width: 230px;
+        height: 100%;
+        background-color: #2d2d2d
+    }
+    ul{
+         margin-top: 70px;
+         list-style: none;
+         display: block;
+    }
+    li{
+        width: 100%;
+        height:50px;
+        border-bottom: 1px solid #323232;
+        overflow: hidden;
 
-  </div></div>
+    }
+    p.menu{
+        position: relative;
+        padding: 16px;
+        padding-right: 25px;
+        float:right;
+        color:white;
+        opacity: .6;
+        font-size: 1.2em;
 
-<?php
-    $user = App\user::select('id','name','email')->get();
-    foreach($user as $user):
-        
-?>
+    }
+    
+    div.barra{
+        position: absolute;
+        height: 50px;
+        width: 0px;
+        background-color: #aaa;
+        opacity: .1;
+        -webkit-transition:width .2s;
 
-<table class="table table-striped"> 
-    <div class="col-md-1"> 
-     <thead> 
-     <tr> 
-      <th>#</th> 
-      <th>Nombre</th> 
-      <th>Email</th>  
-    </tr> 
-    </thead> 
-<?php
-    $user = App\user::select('id','name','email')->get();
-    foreach($user as $user):
-        
-?>
-
-       <th scope="row"> <strong>{{$user->id }}</strong> 
-        <strong><td>{{$user->name }}</td></strong>
-         <strong><td>{{$user->email }}</td></strong>
-
-         <td >
-             <button type="button" class="btn btn-primary center">Modificar</button>
-             </td>
-             <td>
-             <button type="button" class="btn btn btn-danger">Eliminar</button>
-         </td>
-         
-      </th>
-      </table>
-    </div> 
+    }
    
+    li:hover div.barra{
+        width: 230px;
+    }
 
-<?php endforeach?>
+    .container {
+                text-align: center;
+                display: table-cell;
+                vertical-align: middle;
+                background-: black;
+            }
+
+    .content {
+        text-align: center;
+        display: inline-block;
+        width: 19em;
+
+    }
+    #mostrardatos{
+        margin-left: 350px;
+        margin-top: 70px;
+        
+        display: inline-block;
+    }
 
 
+
+}
+</style>
+  <nav>
+      <ul>
+
+            
+              <li>
+                <div class="barra"></div>
+                  <p class="menu" id="menu1">Usuarios</p>
+                  </div>
+              </li>
+            
+          
+              <li>
+                  <div class="barra"></div>
+                  <p class="menu" id="menu2">Agregar Usuarios</p>
+             </li>
+                
+      </ul>
+  </nav>
+
+  <div id="mostrardatos"></div>
+
+
+
+ 
 </body>
-
 </html>

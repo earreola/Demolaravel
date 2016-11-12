@@ -25,4 +25,17 @@ class User extends Authenticatable
     ];
 
     protected $table = 'users';
+
+    /**
+     * v Para que no modifique el campo en blanco
+     *
+     *
+     */
+    public function setPasswordAttribute($value)
+    {
+        if (! empty ($value))
+        {
+            $this->attributes['password'] = bcrypt($value);
+        }
+    }
 }
