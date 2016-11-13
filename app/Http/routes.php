@@ -13,23 +13,14 @@
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
-Route::get('usuario/mostrar','UsuarioController@mostrar');
-Route::get('usuario/edit','UsuarioController@edit');
+
 Route::resource('usuario','UsuarioController');
-
-
-
-
-
 
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
 Route::get('/home', 'HomeController@mostrar');
-
-
-
 Route::get('/auth/mostrar', 'UsuarioController@mostrar');

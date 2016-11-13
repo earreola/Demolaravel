@@ -1,0 +1,57 @@
+
+   table.ancho,table.rwd_auto{
+    border: 1px solid #ccc;
+    width: 100%;
+    margin: 0 0 50px 0;
+   }
+   .ancho th,.red_auto, th{
+    background:#ccc;
+    padding: 5px;
+    text-align: center; 
+   }
+   .ancho td,.red_auto td {
+    border-bottom: 1px solid #ccc;
+    padding: 5px;
+    text-align: center;
+   }
+   .ancho tr:last-child td, .red_auto tr:last-child td{border: 0;}
+   .rwd{
+    width: 100%;
+    overflow: auto;
+   }
+   .rwd table.rwd_auto{
+    white-space: nowrap;
+   }
+
+   @media only screen and (max-width: 580px), (min-width:600px) and (max-width: 1000px)
+   {
+     table.ancho, .ancho thead, .ancho tbody, .ancho td, .ancho tr{ display: block; }
+     .ancho thead tr {position: absolute;top: -9999px;}
+     .ancho tr{ border: 1px solid #ccc; }
+     .ancho td{border:none; border-bottom: 1px solid #ccc; position: relative;padding-left: 50%; text-align: left;}
+     .ancho td:before {position: absolute; top: 6px; left: 6px; width: 45%; padding-right: 10px; white-space: nowrap;}
+     .ancho td:nth-of-type(1):before{content: "#"}
+     .ancho td:nth-of-type(2):before{content: "Nombre"}
+     .ancho td:nth-of-type(3):before{content: "Email"}
+     .ancho td:nth-of-type(4):before{content: "Modificar"}
+     .ancho td:nth-of-type(5):before{content: "Eliminar"}
+
+     .descarto {display: none;}
+     .ancho td{font-size: 16px;}
+    
+   }
+
+  
+   @media only screen and (max-width: 500px)
+   
+   {
+    .ancho td{font-size: 12px;}
+    .descarto {display: none;}
+   }
+   @media only screen and (max-width: 400px)
+   
+   {
+   
+    .descarto {display: none;}
+    .ancho td{font-size: 7px;}
+   }

@@ -53,7 +53,7 @@ class UsuarioController extends Controller
 	public function destroy($id)
 	{
        \App\User::destroy($id);
-       return View('');
+       return View('home');
 	}
 	
 	    

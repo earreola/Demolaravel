@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -8,35 +9,39 @@
                 <div class="panel-heading">Usuarios</div>
 
                 <div class="panel-body">
-                    <table class="table table-striped"> 
+                    <table class="ancho"> 
 
                          <thead> 
                          <tr> 
                           <th>#</th> 
                           <th>Nombre</th> 
-                          <th>Email</th>  
+                          <th>Email</th>
+                          <th>Modificar</th> 
+                          <th>Eliminar</th>   
                         </tr> 
                         </thead> 
+                        <tbody>
                         @foreach($users as $user)
                            <tr>
-                           <th scope="row"> <strong>{{$user->id }}</strong> 
-                            <strong><th>{{$user->name }}</th></strong>
-                             <strong><th>{{$user->email }}</th></strong>
+                           <td scope="row"> <strong>{{$user->id }}</strong> 
+                            <strong><td>{{$user->name }}</td></strong>
+                             <strong><td>{{$user->email }}</td></strong>
 
-                             <th >
+                             <td >
                                  <a href="{{ route('usuario.edit', $user)}}" class="btn btn-primary">Modificar</a>
                                  
-                                 </th>
-                                 <th>
+                                 </td>
+                                 <td>
                                 {!!Form::model($user, ['route' => ['usuario.destroy', $user->id], 'method'=>'DELETE']) !!}
                                     {!!Form::submit('Eliminar',['class'=>'btn btn-danger'])!!}
                                 {!!Form::close()!!}
-                             </th>
+                             </td>
                              
-                          </th>
+                          </td>
                           <tr>
                        
                     @endforeach
+                     </tbody>
                     </table>
 
                 </div>
