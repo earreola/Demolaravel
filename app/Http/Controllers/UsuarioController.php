@@ -26,12 +26,10 @@ class UsuarioController extends Controller
              'email' => $request['email'],
              'password' => bcrypt($request['password']),
     		]);
-    	return "Usuario Registrado";
+    	return View('welcome');
 
     }
-    public function mensaje(){
-    	return "mensaje" ;
-    }
+  
     public function edit($id)
     {
     	$user = \App\User::findOrFail($id);
@@ -48,11 +46,14 @@ class UsuarioController extends Controller
     	$user->password = $request->password;
     	$user->save();
 
+    	return View('home');
+
     }
 
 	public function destroy($id)
 	{
        \App\User::destroy($id);
+       return View('');
 	}
 	
 	    

@@ -23,3 +23,13 @@ Route::resource('usuario','UsuarioController');
 
 
 
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
+
+Route::get('/home', 'HomeController@mostrar');
+
+
+
+Route::get('/auth/mostrar', 'UsuarioController@mostrar');
