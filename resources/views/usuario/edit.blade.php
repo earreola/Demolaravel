@@ -8,10 +8,19 @@
                 <div class="panel-heading">Modificar</div>
 
                 <div class="panel-body">
-              {!!Form::model($user, ['route' => ['usuario.update', $user->id], 'method'=>'PUT']) !!}
-                @include('usuario.Form.repit');           
-              {!!Form::submit('Modificar',['class'=>'btn btn-primary'])!!}
-              {!!Form::close()!!}
+
+                  {!!Form::model($user, ['route' => ['usuario.update', $user->id], 'method'=>'PUT']) !!}
+                        
+                        @include('usuario.Form.repit')
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fa fa-btn fa-user"></i> Modificar
+                                </button>
+                            </div>
+                        </div>
+                  {!!Form::close()!!}
+              
                 </div>
             </div>
         </div>
